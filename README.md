@@ -1,54 +1,33 @@
-# React + TypeScript + Vite
+# ポーカー役判定 React アプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+このアプリは React + TypeScript + Vite で作成された、ポーカーの役判定ツールです。
 
-Currently, two official plugins are available:
+## 主な機能
+- コミュニティカード（最大5枚）と複数プレイヤーの手札（2枚ずつ）をGUIで選択
+- 7枚から最強の役を自動判定
+- 役は日本語で表示
+- 複数プレイヤーの勝敗判定（同じ役の場合も強弱判定）
+- カード・スートごとに色分け表示
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 使い方
+1. 「コミュニティカードに追加」または追加したいプレイヤーを選択
+2. 下のカードパッドからカードをクリックして追加
+3. プレイヤーは「＋プレイヤー追加」ボタンで増やせます
+4. すべての手札が2枚・コミュニティカードが1枚以上になったら「判定」ボタンで役と勝者を表示
+5. 「リセット」ボタンで全てクリア
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 開発・起動方法
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+ブラウザで http://localhost:5173 を開いてください。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ディレクトリ構成
+- `PokerHandChecker.tsx` ... メインUIコンポーネント
+- `pokerHand.ts` ... 役判定ロジック
+- `src/` ... Vite/React 標準構成
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## ライセンス
+MIT
